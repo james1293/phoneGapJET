@@ -1,0 +1,24 @@
+as per  http://www.slideshare.net/phpguru/git-101-31908275
+
+once:
+git config --global user.email "email_address@here.com"
+git config --global user.name "etc"
+(not sure if this part is right)
+
+once:
+git clone url/etc/stuff
+
+==================
+
+every time to send:
+git add filename.txt
+or
+git add .
+
+
+git commit -m "message goes here"
+git push
+
+
+every time to receive:
+git pull origin master
