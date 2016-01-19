@@ -31,17 +31,26 @@
     </head>
     <body>
         <div class="app">
-			<iframe width="200" height="200" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=33.474497%2C%20-82.022683&key=AIzaSyAgqF0QYWaQXDsGva0za_XCDJ7nfbf5d7c"></iframe>
-            <h1>Something</h1>
             <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready<br/>Rly</p>
-                <button onclick="alertCurrentPosition();" class="bw">Testing A BUTTON!</button>
-                <p>And<br/> stuff</p>
+				<div id="notMapStuffContainer">
+					<h1>A Fancy Icon Would Look Good Here</h1>
+					<p class="event listening">Debug: Connecting to Device</p>
+					<p class="event received">Debug: Device is Ready</p>
+					<button onclick="alertCurrentPosition();" class="bw">Button:Alert pos</button>
+					<button onclick="refreshMaptwo();">Button: refreshMap (repeat)</button>
+					<button onclick="moveMarker();">Button: moveMarker</button>
+					<button onclick="doOtherStuffNowThatDeviceIsReady();">Button: "ready"</button>
+                </div>
+                <div id="geolocation" style="width: 100%; height: 85%;"></div>
+                <!-- 
+                <iframe id="googlemap" class="map" width="100%" height="85%" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=33.474497%2C%20-82.022683&key=AIzaSyAgqF0QYWaQXDsGva0za_XCDJ7nfbf5d7c"></iframe>
+                -->
             </div>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAgqF0QYWaQXDsGva0za_XCDJ7nfbf5d7c&sensor=false"> </script> 
+        <!--  http://www.devx.com/wireless/implement-google-maps-api-on-phonegap-using-the-device-api.html#sthash.MiIqEqyf.dpuf -->
         <script type="text/javascript">
             app.initialize();
             
