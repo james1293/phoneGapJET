@@ -74,7 +74,7 @@ var gmarker;
 
 var gmap;
 
-var grespFromMainSingleRequest={'lat':randomCounterThingy,'lng':-82,'timee':0};
+var grespFromMainSingleRequest={'lat':33.474745,'lng':-82.025845,'timee':0};
 
 var refreshMapOLDusingIFRAME = function (){
 	var piece1 = "https://www.google.com/maps/embed/v1/place?q=";
@@ -160,6 +160,13 @@ var startMap = function () {
 	gmap = new google.maps.Map(document.getElementById("geolocation"), mapOptions);
 		
 	gmarker.setMap(gmap);
+	
+	
+	var ctaLayer = new google.maps.KmlLayer({
+		url:'http://jamesda4th.pythonanywhere.com/blueroute.kml', //url: 'jstuff/doc.kml', //url: 'http://googlemaps.github.io/js-v2-samples/ggeoxml/cta.kml',
+		map: gmap
+	});
+	
 }
 
 
