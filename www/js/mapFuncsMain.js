@@ -21,20 +21,11 @@ define(function (require) {
 		busIDArray: [],
 		
 		refreshMarkers: function (respFromSingleRequest) {
-			//for(var i=0; i < busses.busIDArray.length; i++) {
-				//var busID = this.busIDArray[i];
-				//console.log(busID);
-				globalThingy = respFromSingleRequest;
-				console.log(respFromSingleRequest);
-				for(var j=0; j < respFromSingleRequest.length; j++) {
-					var respJustOneBusPart = respFromSingleRequest[j];
-					var busID = respJustOneBusPart.busID;
-					this[busID].googlemarker.setPosition({'lat':respJustOneBusPart.lat,'lng':respJustOneBusPart.lng}); 
-				}
-					
-				
-				//
-			//}
+			for(var j=0; j < respFromSingleRequest.length; j++) {
+				var respJustOneBusPart = respFromSingleRequest[j];
+				var busID = respJustOneBusPart.busID;
+				this[busID].googlemarker.setPosition({'lat':respJustOneBusPart.lat,'lng':respJustOneBusPart.lng}); 
+			}
 		},
 	};
 	

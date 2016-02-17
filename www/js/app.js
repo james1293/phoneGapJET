@@ -20,7 +20,6 @@
 define(function (require) {
 	
 	var main = require('./main');
-	//var getButtonsReadyContainer = require('./getButtonsReadyContainer');
 	 
 	var app = {
 		// Application Constructor
@@ -32,7 +31,9 @@ define(function (require) {
 		// Bind any events that are required on startup. Common events are:
 		// 'load', 'deviceready', 'offline', and 'online'.
 		bindEvents: function() {
+			
 			document.addEventListener('deviceready', this.onDeviceReady, false);
+			
 			main.getButtonsReady();
 		},
 		// deviceready Event Handler

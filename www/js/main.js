@@ -1,5 +1,4 @@
 define(function (require) {
-	
 	var SETTINGS = {
 		timePeriod:5000, //milliseconds between refreshes of map
 		busIDArray:['bus1','bus2'],
@@ -9,15 +8,7 @@ define(function (require) {
 	
 	// this might not be the cleanest way, but I'm still learning here.
 	var doOtherStuffNowThatDeviceIsReady = function() {
-				
 		mapFuncsMain.doMapStuff(SETTINGS);
-		
-		
-		
-		// console.log("navigator.geolocation works well");
-		// alert("V2 navigator.geolocation works well");
-		
-		//do a request for http://jamesda4th.pythonanywhere.com/busloconly
 	};
 	
     return {
@@ -29,7 +20,7 @@ define(function (require) {
 			}, false);
         },        
 
-		doOtherStuffNowThatDeviceIsReady, //already defined
+		doOtherStuffNowThatDeviceIsReady:doOtherStuffNowThatDeviceIsReady, 
 		
     };
 });
