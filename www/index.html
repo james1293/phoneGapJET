@@ -36,10 +36,11 @@
 					<h1>A Fancy Icon Would Look Good Here</h1>
 					<p class="event listening">Debug: Connecting to Device</p>
 					<p class="event received">Debug: Device is Ready</p>
+					
 					<button onclick="alertCurrentPosition();" class="bw">Button:Alert pos</button>
 					<button onclick="refreshMaptwo();">Button: refreshMap (repeat)</button>
 					<button onclick="moveMarker();">Button: moveMarker</button>
-					<button onclick="doOtherStuffNowThatDeviceIsReady();">Button: "ready"</button>
+					<button id="readybutton">Button: "ready"</button>
                 </div>
                 <div id="geolocation" style="width: 100%; height: 85%;"></div>
                 <!-- 
@@ -48,12 +49,27 @@
             </div>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAgqF0QYWaQXDsGva0za_XCDJ7nfbf5d7c&sensor=false"> </script> 
+        
+        <!-- data-main attribute tells require.js to load
+             scripts/main.js [[Or in my case, js/app.js]] after require.js loads. -->
+        <script data-main="js/app" src="js/require.js"></script>
+        <!-- as per https://fovea.cc/blog/index.php/requirejs-phonegap-tutorial/ -->
+        <script>
+			requirejs.config({ baseUrl: "js" });
+			requirejs(['app'], function (app) {
+				app.initialize();
+				//This function is called when app.js is loaded.
+				//If app.js calls define(), then this function is not fired until
+				//app's dependencies have loaded, and the app argument will hold
+				//the module value for "app".
+			});
+		</script>
+        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAgqF0QYWaQXDsGva0za_XCDJ7nfbf5d7c"> </script> 
         <!--  http://www.devx.com/wireless/implement-google-maps-api-on-phonegap-using-the-device-api.html#sthash.MiIqEqyf.dpuf -->
-        <script type="text/javascript">
+        <!--<script type="text/javascript">
             app.initialize();
             
         </script>
+        -->
     </body>
 </html>
