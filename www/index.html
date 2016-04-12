@@ -27,21 +27,83 @@
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
+        <title>JET</title>
+        <link rel="shortcut icon" href="icon.ico"/>
     </head>
     <body>
         <div class="app">
             <div id="deviceready" class="blink">
 				<div id="notMapStuffContainer">
-					<h1>A Fancy Icon Would Look Good Here</h1>
+					<!--<h1>A Fancy Icon Would Look Good Here</h1>
 					<p class="event listening">Debug: Connecting to Device</p>
-					<p class="event received">Debug: Device is Ready</p>
+					<p class="event received">Debug: Device is Ready</p> -->
 					
 					<!--<button onclick="alertCurrentPosition();" >Button:Alert pos</button> -->
 					<!--<button onclick="refreshMaptwo();">Button: refreshMap (repeat)</button>-->
-					<button onclick="moveMarker();">Button: moveMarker</button>
-					<button class="bw" id="readybutton">Button: "ready"</button>
+					<!--<button onclick="moveMarker();">Button: moveMarker</button>
+					<button class="bw" id="readybutton">Button: "ready"</button>-->
+					<button class="bw" id="scheduleButton">Schedule</button>
+					<button class="bw" id="helpButton">Help</button>
                 </div>
+                <div id="schedule" class="lightbox">
+					<button class="bw" id="scheduleCloseButton">X</button>
+					<p><strong><span style="color: #0033cc;">Blue Route</span> - Summerville/Forest Hills Loop:</strong> Operates when undergraduate classes are in session. Fall &amp; Spring&nbsp;Academic Session&nbsp;Service
+                                 Hours are: Monday - Thursday 7:00am - 11:00pm and Friday, 7:00am - 6:00pm. Summer
+                                 Session Service Hours are: Monday - Thursday 7:00am - 10:00pm and Friday, 7:00am -
+                                 6:00pm. There are four stops: At the Summerville Location main entrance near University
+                                 Hall, Between Allgood and Science Hall in parking lot 25, Near the main entrance of
+                                 Christenberry Fieldhouse, and at the Bus Stop on Jaguar&nbsp;Way near University Village.
+                                 During Fall and Spring, the shuttle visits each stop approximately every 15 minutes
+                                 between 7:00am and 6:00pm M- Fri, and every 30 minutes between 6:00pm and 11:00pm
+                                 M- Th. Summer Service Hours are: Monday - Thursday 7:00am&nbsp;- 10:00pm and Friday 7:00am
+                                 - 6:00pm. During Summer sessions, the shuttle visits each&nbsp;stop approximately every
+                                 30 minutes.
+                              </p>
+                              <p><strong><span style="color: #ff0033;">Red Route</span> - Summerville/Health Sciences Inter-Campus: </strong>Operates when undergraduate classes are in session<strong>. </strong>Fall, Spring, and Summer Semester/Session Service Hours are: Monday - Thursday 7:00am
+                                 – 10:00pm and Friday, 7:00am – 6:00pm. There are two stops: At the Summerville&nbsp;Campus
+                                 main entrance near University Hall and at the Health Sciences&nbsp;Campus on Goss Lane.
+                                 The shuttle visits each stop approximately every 30 minutes and departs the Health
+                                 Sciences campus on the hour and on the half hour and departs the Summerville campus
+                                 on the 15 and 45.&nbsp;&nbsp;&nbsp;
+                              </p>
+                              <p><strong><span style="color: #00b050;">Green Route</strong></span> –&nbsp; Service for the northern areas of the&nbsp;Health Sciences campus. Operates weekdays
+                                    except on official Augusta University holidays, 5:30am - 6:00pm. There are four stops:
+                                    Annex, Alumni Center, GRMC (Harper Street) and Lot 65. The shuttle visits each stop
+                                    approximately every 10 minutes. </p>
+                                    <p><span style="color: #ff9900;"><strong>Gold Route</strong> </span>–&nbsp; Service for the southern areas of the Health Sciences campus. Operates weekdays
+                                    except on official Augusta University holidays, 5:30am - 6:00pm. There are seven stops:
+                                    Moore Ave (Lot 69), Parnell St., GRMC (Harper St.), Health Sciences Bldg., Laney Stadium,
+                                    Goss Lane, and the Dental College of Georgia. The shuttle visits each stop approximately
+                                    every 7 minutes between 5:30am and 8:00am and every 11 minutes 8:00am - 6:00pm. </span></p>
+                </div>
+                <div id="help" class="lightbox">
+					<button class="bw" id="helpCloseButton">X</button>
+					
+                 <h2>Contact Info:</h2>
+                 <p>
+                                  Health Sciences Campus: <br/>
+  706-721-2953<br/>
+  parkingoffice@gru.edu<br/>
+  Annex II, HT-1147<br/>
+  524 15th Street, Augusta, GA<br/>
+   Monday - Friday: 7am - 5pm<br/>
+<br/>
+Summerville Campus: <br/>
+   706-729-2090<br/>
+   parkingoffice@gru.edu<br/>
+   Public Safety Building (PSS)<br/>
+  2500 Walton Way, Augusta, GA<br/>
+   Monday-Thursday: 7am - 5pm, Friday: 7am - 4pm<br/>
+   <br/>
+                 Developer:<br/>
+                 James O'Meara<br/>
+                 james.da.4th@gmail.com<br/>
+                 <br/>
+
+                 
+                 </p>
+                </div>
+                <div id="troubleConnecting" style="display:none;color:red;">Having trouble connecting.</div>
                 <div id="geolocation" style="width: 100%; height: 85%;"></div>
                 <!-- 
                 <iframe id="googlemap" class="map" width="100%" height="85%" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=33.474497%2C%20-82.022683&key=AIzaSyAgqF0QYWaQXDsGva0za_XCDJ7nfbf5d7c"></iframe>
@@ -54,6 +116,7 @@
              scripts/main.js [[Or in my case, js/app.js]] after require.js loads. -->
         <script data-main="js/app" src="js/require.js"></script>
         <!-- as per https://fovea.cc/blog/index.php/requirejs-phonegap-tutorial/ -->
+        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAgqF0QYWaQXDsGva0za_XCDJ7nfbf5d7c"> </script>
         <script>
 			requirejs.config({ baseUrl: "js" });
 			requirejs(['app'], function (app) {
@@ -64,7 +127,7 @@
 				//the module value for "app".
 			});
 		</script>
-        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAgqF0QYWaQXDsGva0za_XCDJ7nfbf5d7c"> </script> 
+        
         <!--  http://www.devx.com/wireless/implement-google-maps-api-on-phonegap-using-the-device-api.html#sthash.MiIqEqyf.dpuf -->
         <!--<script type="text/javascript">
             app.initialize();

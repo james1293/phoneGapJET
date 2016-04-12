@@ -7,9 +7,17 @@ define(function (require) {
 	
 	//this is a CLASS.
 	var MyBusObject = function (_busID) {
+		var iconFile;
+		if (_busID === 'bus1')
+		  iconFile = 'iconSmallBlue.ico';
+		else if (_busID === 'bus2')
+		  iconFile = 'iconSmallRed.ico';
+		else
+		  iconFile = 'iconSmall.ico';
 		this.googlemarker = new google.maps.Marker({
 			position: DEFAULT_STARTING_POSITION_DURING_DEBUG,
-			title: _busID
+			title: _busID,
+			icon: iconFile //'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
 		});
 		this.cLoc=DEFAULT_STARTING_POSITION_DURING_DEBUG;
 		this.cLoc['lat']+=0.001*Math.random(); //scatter the default marker locations a bit
@@ -42,15 +50,18 @@ define(function (require) {
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
 			   if(xmlhttp.status == 200){
+				   document.getElementById('troubleConnecting').style.display = 'none';
 				   //document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
 				   var tempResp=JSON.parse(xmlhttp.responseText);
 				   busses.refreshMarkers(tempResp);
 			   }
 			   else if(xmlhttp.status == 400) {
-				  alert('There was an error 400')
+				  alert('There was an error 400');
 			   }
 			   else {
-				  alert('something else other than 200 was returned')
+				  //alert('something else other than 200 was returned');
+				  //alert('Having trouble connecting.');
+				  document.getElementById('troubleConnecting').style.display = 'block';
 			   }
 			}
 		}
@@ -135,8 +146,8 @@ define(function (require) {
 				
 			
 			var ctaLayer = new google.maps.KmlLayer({
-				url:'http://jamesda4th.pythonanywhere.com/campus.kml', //url: 'jstuff/doc.kml', //url: 'http://googlemaps.github.io/js-v2-samples/ggeoxml/cta.kml',
-				map: gmap
+				url:'http://jamesda4th.pythonanywhere.com/justBlueRoute.kml', //url:'http://jamesda4th.pythonanywhere.com/campus.kml', //url: 'jstuff/doc.kml', //url: 'http://googlemaps.github.io/js-v2-samples/ggeoxml/cta.kml',
+				map:gmap
 			});
 			
 			setInterval(refreshCurrentBusLocation, SETTINGS.timePeriod);

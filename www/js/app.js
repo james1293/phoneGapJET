@@ -32,7 +32,11 @@ define(function (require) {
 		// 'load', 'deviceready', 'offline', and 'online'.
 		bindEvents: function() {
 			
+			//for phone app
 			document.addEventListener('deviceready', this.onDeviceReady, false);
+			
+			//for web app
+			window.onload = main.doOtherStuffNowThatDeviceIsReady();
 			
 			main.getButtonsReady();
 		},

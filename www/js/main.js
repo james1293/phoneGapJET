@@ -13,10 +13,24 @@ define(function (require) {
 	
     return {
 		getButtonsReady: function () {
-			var myEl = document.getElementById('readybutton');
-
-			myEl.addEventListener('click', function() {
-				doOtherStuffNowThatDeviceIsReady();
+			document.getElementById('scheduleButton').addEventListener('click', function() {
+				document.getElementById('schedule').style.display = 'block';				
+				document.getElementById('help').style.display = 'none';
+			}, false);
+			
+			document.getElementById('scheduleCloseButton').addEventListener('click', function() {
+				document.getElementById('schedule').style.display = 'none';
+				document.getElementById('help').style.display = 'none';
+			}, false);
+			
+			document.getElementById('helpButton').addEventListener('click', function() {
+				document.getElementById('help').style.display = 'block';				
+				document.getElementById('schedule').style.display = 'none';
+			}, false);
+			
+			document.getElementById('helpCloseButton').addEventListener('click', function() {
+				document.getElementById('schedule').style.display = 'none';
+				document.getElementById('help').style.display = 'none';
 			}, false);
         },        
 
